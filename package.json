@@ -8,7 +8,7 @@
     "node": ">=22.0.0"
   },
   "scripts": {
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --dotenv .env.dev",
     "build": "nuxt build",
     "start": "nuxt start",
     "preview": "nuxt preview",
@@ -42,6 +42,7 @@
     "@playwright/test": "^1.47.1",
     "@types/node": "22.5.5",
     "@types/youtube-player": "5.5.11",
+    "@vite-pwa/nuxt": "^0.10.5",
     "@vitest/ui": "^2.1.1",
     "@vue/test-utils": "^2.4.6",
     "dayjs": "1.11.13",

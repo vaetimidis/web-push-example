@@ -18,6 +18,7 @@ export const baseCfg: NuxtConfig = {
     '@nuxt/eslint',
     '@pinia/nuxt',
     '@nuxt/icon',
+    '@vite-pwa/nuxt',
     '@nuxt/test-utils/module',
     ['nuxt-viewport', {
       breakpoints: {

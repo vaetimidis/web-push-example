@@ -1,6 +1,7 @@
 import {
   baseCfg,
   importsCfg,
+  pwaCfg,
   runtimeCfg,
   viteCfg,
 } from './build'
@@ -12,10 +13,12 @@ export default defineNuxtConfig({
 
   $development: {
     runtimeConfig: runtimeCfg.development,
+    pwa: pwaCfg.development,
   },
 
   $production: {
     runtimeConfig: runtimeCfg.production,
+    pwa: pwaCfg.production,
   },
 
   imports: importsCfg,
