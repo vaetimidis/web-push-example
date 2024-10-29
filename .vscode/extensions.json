@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "aaron-bond.better-comments",
+    "usernamehw.errorlens"
+  ],
+  "unwantedRecommendations": [
+    "octref.vetur",
+    "esbenp.prettier-vscode"
+  ]
+}
