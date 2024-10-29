@@ -1,3 +1,4 @@
+<!-- eslint-disable no-console -->
 <script lang="ts" setup>
 const app = useAppConfig()
 const { $pwa } = useNuxtApp()
@@ -5,12 +6,12 @@ const { $pwa } = useNuxtApp()
 useHead(app)
 
 onMounted(() => {
+  console.info(import.meta.env)
+
   if ($pwa?.offlineReady) {
-    // eslint-disable-next-line no-console
     console.info('App ready to work offline')
   }
   else {
-    // eslint-disable-next-line no-console
     console.info('App is not ready, but why?')
   }
 })
@@ -18,6 +19,7 @@ onMounted(() => {
 
 <template>
   <NuxtLayout>
+    <NuxtPwaAssets />
     <NuxtPage />
   </NuxtLayout>
 </template>

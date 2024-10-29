@@ -49,7 +49,6 @@ const sharedConf: NuxtConfig['pwa'] = {
     }],
   },
   workbox: {
-    navigateFallback: '/',
     globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
     cleanupOutdatedCaches: true,
   },
