@@ -4,7 +4,9 @@ import type { InputConfig } from './cfg.types'
 const sharedConf: NuxtConfig['pwa'] = {
   base: '/',
   scope: '/',
-  strategies: 'generateSW',
+  strategies: 'injectManifest',
+  srcDir: 'service-worker',
+  filename: 'sw.ts',
   registerType: 'prompt',
   includeAssets: ['favicon.ico'],
   manifest: {

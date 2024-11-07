@@ -1,25 +1,47 @@
 <!-- eslint-disable no-console -->
-<script lang="ts" setup>
-const app = useAppConfig()
-const { $pwa } = useNuxtApp()
-
-useHead(app)
-
+<script setup lang="ts">
 onMounted(() => {
-  console.info(import.meta.env)
-
-  if ($pwa?.offlineReady) {
-    console.info('App ready to work offline')
+  if ('Notification' in window) {
+    requestNotificationPermission()
   }
   else {
-    console.info('App is not ready, but why?')
+    console.error('Браузер не поддерживает уведомления')
   }
 })
+
+async function requestNotificationPermission() {
+  const permission = await Notification.requestPermission()
+  if (permission === 'granted') {
+    console.log('permission granted')
+    await registerServiceWorker()
+  }
+  else if (permission === 'denied') {
+    console.warn('permission denied')
+  }
+  else if (permission === 'default') {
+    console.warn('permission ignored')
+  }
+}
+
+function registerServiceWorker() {
+  navigator.serviceWorker.getRegistration()
+    .then((registration) => {
+      if (registration && registration.active) {
+        // we need to signal the service worker that we are ready to receive data
+        registration.active.postMessage({ action: 'ready-to-receive' })
+      }
+    })
+    .catch(err => console.error('Could not get registration', err))
+}
 </script>
 
 <template>
-  <NuxtLayout>
-    <NuxtPwaAssets />
-    <NuxtPage />
-  </NuxtLayout>
+  <div>
+    <button @click="requestNotificationPermission">
+      Запросить разрешение на уведомления
+    </button>
+  </div>
 </template>
+
+<style lang="scss" scoped>
+</style>
